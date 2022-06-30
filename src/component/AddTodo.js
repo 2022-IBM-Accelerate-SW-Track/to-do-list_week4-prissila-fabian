@@ -39,14 +39,15 @@ class AddTodo extends Component {
   // in the Home.js file which then adds the input into the list.
   handleSubmit = (event) => {
     const jsonObject = {
-      //id: this.state.id,
+      id: this.state.id,
       task: this.state.content,
       currentDate: this.state.date,
       dueDate: this.state.duedate
    };
+
    Axios({
     method: "POST",
-    url: "http://localhost:<0808>/add/item",
+    url: "http://localhost:0808/add/item",
     data: {jsonObject},
     headers: {
        "Content-Type": "application/json"
@@ -54,6 +55,7 @@ class AddTodo extends Component {
  }).then(res => {
     console.log(res.data.message);
  });
+
     event.preventDefault();
     if (this.state.content.trim()) {
       this.props.addTodo(this.state);
